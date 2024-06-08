@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "paths": {
+      "@router": ["./src/router/config.router.ts"],
+      "@utils/declination": ["./src/utils/declination.ts"],
+      "@sockets": ["./src/sockets/sockets.ts"],
+      "@logger-sockets": ["./src/sockets/logger.ts"],
+      "@logger-sockets-utils": ["./src/sockets/utils/logger.ts"],
+      "@project-sockets": ["./src/sockets/project.ts"],
+      "@bot": ["./src/telegram-bot/Bot.ts"],
+      "@logger": ["./src/utils/logger.ts"]
+    },
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "target": "ES6"
+  },
+  "exclude": [
+    "./node_modules/**/*",
+    "./dist/**/*"
+  ],
+  "include": [
+    "./src/**/*",
+    "./*.ts"
+  ]
+}

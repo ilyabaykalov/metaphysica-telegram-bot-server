@@ -1,0 +1,6 @@
+{
+  "watch": [ "src/**/*.ts" ],
+  "exec": "ts-node $NODE_DEBUG_OPTION -r tsconfig-paths/register server.ts",
+  "files": "server.ts",
+  "env-file": ".env"
+}

@@ -1,0 +1,10 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='./stylesheets.css')
+    body
+        block content
+            .container
+                img.logo(src='./assets/logo.png')
+                h1.header=`${ title } is running`

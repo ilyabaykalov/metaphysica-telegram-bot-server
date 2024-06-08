@@ -1,0 +1,193 @@
+{
+	"root": true, "env": {
+	"node": true, "es6": true
+}, "parser": "@typescript-eslint/parser", "parserOptions": {
+	"sourceType": "module"
+}, "extends": [
+	"airbnb-base",
+	"eslint:recommended",
+	"plugin:@typescript-eslint/recommended",
+	"plugin:import/recommended",
+	"plugin:import/typescript",
+	"plugin:jest/recommended"
+], "plugins": [
+	"amd", "@typescript-eslint"
+], "settings": {
+	"import/extensions": [
+		".js", ".ts", ".json"
+	], "import/parsers": {
+		"@typescript-eslint/parser": [
+			".ts"
+		]
+	}, "import/resolver": {
+		"alias": {
+			"map": [
+				["@router", "./src/router/config.router.ts"],
+				["@utils/declination", "./src/utils/declination.ts"],
+				["@sockets", "./src/sockets/sockets.ts"],
+				["@logger-sockets", "./src/sockets/logger.ts"],
+				["@logger-sockets-utils", "./src/sockets/utils/logger.ts"],
+				["@project-sockets", "./src/sockets/project.ts"],
+				["@bot", "./src/telegram-bot/Bot.ts"],
+				["@logger", "./src/utils/logger.ts"]
+			], "extensions": [".js", ".ts", ".json"]
+		}
+	}
+}, "rules": {
+	// Ошибки
+	"import/extensions": [
+		"error", "always", {
+			"ts": "never", "tsx": "never"
+		}
+	], // Не требовать расширение файла при импорте
+	"import/no-unresolved": "error", // Недоступный импорт
+	"no-dupe-args": "error", // Дублирование аргументов
+	"no-dupe-keys": "error", // Дублирование ключей: { foo: bar, foo: baz }
+	"no-unreachable": "error", // Код который никогда не выполниться
+
+	// Предупреждения
+	"amd/no-unused-dependencies": "warn", // Неиспользуемый импорт,
+	"amd/obsolete-dependencies": "warn", // Устаревшие зависимости,
+	"amd/sane-dependency-names": "warn", // Переименовывание AMD импортов: define 'dojo/foo' as bar,
+	"block-scoped-var": "warn", // Использование переменной вне привязочного контекста,
+	"block-spacing": "warn", // Некорректные отступы внутри блоков: {return;},
+	"brace-style": "warn", // Неправильная расстановка скобок: }\nelse,
+	"camelcase": "warn", // Неиспользование CamelCase,
+	"comma-dangle": "warn", // Лишняя запятая в конце: [ 1, 2, 3, ],
+	"comma-spacing": "warn", // Отсутствующий пробел после запятой,
+	"comma-style": "warn", // Некорректное размещение запятой,
+	"computed-property-spacing": "warn", // Лишние пробелы в объявлениях: ( var foo = {[ bar ]: baz} ),
+	"curly": "warn", // Разнородная запись блоков для if: if (foo) foo++,
+	"default-case": "warn", // Пропущенный default кейс в свиче,
+	"eol-last": "warn", // Переход на новую строку в конце файла,
+	"eqeqeq": "warn", // Использование нестрогого сравнения == или !=,
+	"func-call-spacing": "warn", // Ошибки отступа при вызове функции: arr.forEach (,
+	"function-paren-newline": "warn", // Переход на новую строку в нотации параметров функции,
+	"guard-for-in": "warn", // for...in без фильтрации {}.hasOwnProperty.call(foo, key),
+	"import/no-dynamic-require": "warn", // Динамический импорт: require([variables], ()=>{}){},
+	"indent": [
+		"warn", "tab", {
+			"SwitchCase": 1, "MemberExpression": 1
+		}
+	], // Неправильные отступы,
+	"key-spacing": "warn", // Отсутствующий пробел между key: и value в {key:value},
+	"keyword-spacing": "warn", // Пропущенный отступ от ключевого слова: try{,
+	"linebreak-style": "warn", // Некорректный формат символов перехода на новую строку,
+	"max-len": ["warn", 200], // Строки кода длинее 180 символов,
+	"new-cap": "warn", // Использование конструктора называющегося с маленькой буквы,
+	"no-array-constructor": "warn", // Использование new Array() вместо [],
+	"no-cond-assign": "warn", // Присвоение в условии: while (foo = bar),
+	"no-constant-condition": "warn", // Неизменяющееся условие: while (true),
+	"no-else-return": "warn", // Нелогичное использование else для return,
+	"no-empty": "warn", // Пустой блок: catch (err) {},
+	"no-eval": "warn", // Использование eval,
+	"no-extra-bind": "warn", // Излишнее использование байндинга
+	"no-extra-boolean-cast": "warn", // Излишнее приведение к boolean: if (!!param) {}
+	"no-extra-semi": "warn", // Лишние точки с запятой
+	"no-lonely-if": "warn", // Одинокий if: else { if(){} } вместо else if () {}
+	"no-loop-func": "warn", // Небезопасная манипуляция внешними данными в цикле
+	"no-mixed-operators": "warn", // Смешивание разных операторов без скобок: a + b * c
+	"no-multi-spaces": "warn", // Лишние пробелы: var foo = { bar: true }
+	"no-multiple-empty-lines": "warn", // Отступы больше чем одной пустой строки
+	"no-new": "warn", // Использование new для сайд еффекта (никуда не сохраняя)
+	"no-new-func": "warn", // Использование конструктора функций
+	"no-proto": "warn", // Использование свойства __proto__
+	"no-prototype-builtins": "warn", // Прямая проверка hasOwnProperty у объекта
+	"no-redeclare": "warn", // Переобъявление переменных
+	"no-restricted-globals": "warn", // Обращение к глобальным методам/свойствам
+	"no-restricted-syntax": "warn", // Использование плохой записи
+	"no-return-assign": "warn", // Присвоение в return
+	"no-spaced-func": "warn", // Лишний пробел при вызове функции: arr.forEach (
+	"no-tabs": "off", // Использование таба вместо пробела: 		//\tТак не надо
+	"no-throw-literal": "warn", // Выброс литералов: throw { msg: "Не найдено", act: action }
+	"no-trailing-spaces": "warn", // Лишние пробелы в конце строки
+	"no-undef": "warn", // Использование чего-то несуществующего
+	"no-undef-init": "warn", // Инициализирование значения undefined
+	"no-unneeded-ternary": "warn", // Использование тернарного оператора там, где он не нужен
+	"no-useless-escape": "warn", // Излишнеее экранирование символов: "\'"
+	"no-useless-return": "warn", // Бесполезное использование return
+	"no-var": "warn", // Использование var вместо let и const
+	"no-whitespace-before-property": "warn", // Лишние отступы при обращении к пропу: object .prop
+	"nonblock-statement-body-position": "warn", // Запись if (foo) bar(); else baz(); на 4 строках вместо двух
+	"object-curly-spacing": "warn", // Отсутствующие отступы от скобок в объектах: { key: val }
+	"object-property-newline": "warn", // Написание пропов в одну строку, когда они не влезают
+	"one-var": "warn", // Множественное объявление: var foo = 1, bar = 2, baz = 3
+	"one-var-declaration-per-line": "warn", // Множественное объявление в одной строке
+	"operator-assignment": "warn", // title = title + ": " вместо title += ": "
+	"operator-linebreak": "warn", // Некорректное размещение операторов && || при переносах
+	"padded-blocks": "warn", // Отсутствующие отступы вначале и в конце блока
+	"prefer-arrow-callback": "warn", // Использование function(){} в качестве кб вместо ()=>{}
+	"prefer-const": "warn", // Не использовать const там, где следует использовать
+	"prefer-destructuring": "warn", // var gList = this.group.gList вместо var { gList } = this.group
+	"prefer-template": "warn", // _this.Id + "_" + i._id вместо `${_this.Id}_${i._id}`
+	"quote-props": "warn", // Излишние кавычки в параметрах: { "parameter": 123456 }
+	"quotes": "warn", // Использование \" в строках ( вместо ' )
+	"radix": "warn", // Отсутствующее основание (radix) в parseInt
+	"semi": "warn", // Пропущенные ;
+	"semi-spacing": "warn", // Лишний отступ перед \; в конце строки
+	"semi-style": "warn", // Некорректное размещение точки с запятой
+	"space-before-blocks": "warn", // Отсутствующий пробел между function() и {
+	"space-in-parens": "warn", // Лишние пробелы внутри function( param )
+	"space-infix-ops": "warn", // Отсутствующиие пробелы возле оператора +
+	"space-unary-ops": "warn", // Слитное написание унарного оператора и операнда: typeof(foo)
+	"spaced-comment": "warn", // Отсутствующий отступ вначале комментария
+	"strict": "warn", // Биндинг в strict mode
+	"switch-colon-spacing": "warn", // Некорректные отступы в свичах: case "DOUBLE"
+	"yoda": "warn", // if ("pepsi" === drink) вместо if (drink === "pepsi")
+
+	// Выключенные правила
+	"array-bracket-spacing": "off", // Пробелы возле скобок в массивах: [ a, b, c ]
+	"array-callback-return": "off", // Коллбэк должен что-то возвращать
+	"consistent-return": "off", // Неконсистентный return из функций (возвращает... или нет)
+	"class-methods-use-this": "off", // Использование this в методах класса
+	"default-param-last": "off", // Разрешено использовать параметры с дефолтным значением
+	"dot-notation": "off", // Отключение дот-нотации
+	"func-names": "off", // Использование безымянных функций: function(){}
+	"global-require": "off", // Использование глобального require
+	"import/no-amd": "off", // Неиспользование сокращений для {}: { x: x, y: y } вместо { x, y }
+	"import/no-extraneous-dependencies": "off", "import/prefer-default-export": "off",
+	"implicit-arrow-linebreak": "off", // Перенос строки при объявлении стрелочной функции
+	"template-curly-spacing": "off", // Пробелы вокруг скобок при интерполяции { x, y }
+	"newline-per-chained-call": "off", // Новая строка перед цепочкой вызова,
+	"no-alert": "off", // Использование window.alert()
+	"no-case-declarations": "off", // Объявление переменных в switch case
+	"no-console": "off", // Использование методов console.log, console.warn и др
+	"no-continue": "off", // Использование continue
+	"no-extend-native": "off", // Расширение нативного кода
+	"no-fallthrough": "off", // Объединение кейсов в switch
+	"no-multi-assign": "off", // Множественное присвоение: var foo = foo = bar
+	"no-nested-ternary": "off", // Использование вложенных тернарников
+	"no-param-reassign": "off", // Мутация или переопределение параметров
+	"no-plusplus": "off", // Использование унарного инкремента: self.rerty_count++
+	"no-shadow": "off", // Теневое объявление: var a = "foo"; function(){ var a = "bar" }
+	"no-shadow-restricted-names": "off", // Затенение глобальных переменных
+	"no-template-curly-in-string": "off", // Самодельный templating в строках: "Значение: '${value}'"
+	"no-underscore-dangle": "off", // Висячие подчеркивания ( _this , _cache )
+	"no-unused-expressions": "off", // Неиспользуемое выражение
+	"no-unused-vars": "off", // Неиспользуемые переменные
+	"no-use-before-define": "off", // Не использовать до объявления
+	"object-curly-newline": "off", // Некрасивое распределение по строкам внутри блока
+	"object-shorthand": "off", // Неиспользование сокращений для {}: { x: x, y: y } вместо { x, y }
+	"prefer-rest-params": "off", // Использование function(){ arguments } вместо function (...args)
+	"prefer-spread": "off", // Math.max.apply(Math, args) вместо Math.max(...args)
+	"space-before-function-paren": "off", // Отсутствующий пробел между function и ()
+	"vars-on-top": "off", // Объявление переменной не вверху блока
+
+	// Правила TypeScript
+	// Ошибки
+	"@typescript-eslint/no-unused-vars": "error", // Не использовать до объявления
+	"@typescript-eslint/no-use-before-define": "error", // Использование переменной до её объявления
+	"@typescript-eslint/ban-types": [
+		"error", {
+			"types": {
+				"object": false
+			}, "extendDefaults": true
+		}
+	], // Использование переменной до её объявления
+
+	// Выключенные правила
+	"@typescript-eslint/ban-ts-comment": "off", "@typescript-eslint/no-var-requires": "off",
+	// Ошибка при использовании requires
+	"@typescript-eslint/no-explicit-any": "off" // Запрет использования типа данных any
+}
+}
